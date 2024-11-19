@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_ALUNOS 5
+#define MAX_NOTAS 3
+
+float calcular_media(float notas[], int tamanho) {
+    float soma = 0;
+    for (int i = 0; i < tamanho; i++) {
+        soma += notas[i];
+    }
+    return soma / tamanho;
+}
+
+int main() {
+    char nomes[MAX_ALUNOS][50];
+    float notas[MAX_ALUNOS][MAX_NOTAS];
+    float medias[MAX_ALUNOS];
+    int alunos_acima_de_sete = 0;
+
+    for (int i = 0; i < MAX_ALUNOS; i++) {
+        printf("Digite o nome do aluno %d: ", i + 1);
+        scanf(" %[^\n]", nomes[i]);
+
+        for (int j = 0; j < MAX_NOTAS; j++) {
+            printf("Digite a nota %d do aluno %s: ", j + 1, nomes[i]);
+            scanf("%f", &notas[i][j]);
+        }
+
+        medias[i] = calcular_media(notas[i], MAX_NOTAS);
+        if (medias[i] > 7.0) {
+            alunos_acima_de_sete++;
+        }
+    }
+
+    printf("\nSaída:\n");
+    for (int i = 0; i < MAX_ALUNOS; i++) {
+        printf("Aluno %d: %s\n", i + 1, nomes[i]);
+        printf("Notas: ");
+        for (int j = 0; j < MAX_NOTAS; j++) {
+            printf("%.1f ", notas[i][j]);
+        }
+        printf("\nMédia: %.1f\n\n", medias[i]);
+    }
+
+    printf("Quantidade de alunos com média acima de 7: %d\n", alunos_acima_de_sete);
+
+    return 0;
+}
