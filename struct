@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+struct Produto {
+    int codigo[10];
+    char descricao[10][100];
+    float precoCusto[10];
+};
+
+int main() {
+    struct Produto produtos;
+    
+    for(int i = 0; i < 10; i++) {
+        printf("Digite o código do produto %d: ", i + 1);
+        scanf("%d", &produtos.codigo[i]);
+        
+        printf("Digite a descrição do produto %d: ", i + 1);
+        scanf(" %[^\n]s", produtos.descricao[i]);
+        
+        printf("Digite o preço de custo do produto %d: ", i + 1);
+        scanf("%f", &produtos.precoCusto[i]);
+        
+        printf("\n");
+    }
+    printf("Dados dos produtos cadastrados:\n");
+    for(int i = 0; i < 10; i++) {
+        printf("Produto %d\n", i + 1);
+        printf("Código: %d\n", produtos.codigo[i]);
+        printf("Descrição: %s\n", produtos.descricao[i]);
+        printf("Preço de Custo: %.2f\n", produtos.precoCusto[i]);
+        printf("\n");
+    }
+    return 0;
+}
