@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+union TipoUniao {
+    int inteiro;
+    float flutuante;
+};
+
+int main() {
+    union TipoUniao u;
+
+    u.inteiro = 10;
+    printf("Valor do inteiro: %d\n", u.inteiro);
+
+    u.flutuante = 5.5;
+    printf("Valor do flutuante: %.2f\n", u.flutuante);
+
+    printf("Valor do inteiro após atribuição de flutuante: %d\n", u.inteiro);
+
+    system("pause");
+
+    return 0;
+}
