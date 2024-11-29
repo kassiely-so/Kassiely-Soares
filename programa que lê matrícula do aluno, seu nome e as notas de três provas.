@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Aluno {
+    int matricula;
+    char nome[100];
+    float notas[3];
+};
+
+int main() {
+    struct Aluno alunos[5];
+    int i, indiceMaiorMedia = 0;
+    float maiorMedia = 0, mediaAtual;
+
+    for (i = 0; i < 5; i++) {
+        printf("Digite o nome do aluno %d: ", i + 1);
+        fgets(alunos[i].nome, sizeof(alunos[i].nome), stdin);
+        alunos[i].nome[strcspn(alunos[i].nome, "\n")] = '\0';
+
+        printf("Digite a matricula do aluno %d: ", i + 1);
+        scanf("%d", &alunos[i].matricula);
+
+        printf("Digite as notas do aluno %d: ", i + 1);
+        for (int j = 0; j < 3; j++) {
+            scanf("%f", &alunos[i].notas[j]);
+        }
+        getchar();
+
+        mediaAtual = (alunos[i].notas[0] + alunos[i].notas[1] + alunos[i].notas[2]) / 3.0;
+        if (mediaAtual > maiorMedia) {
+            maiorMedia = mediaAtual;
+            indiceMaiorMedia = i;
+        }
+    }
+
+    printf("\nAluno com maior media geral:\n");
+    printf("Nome: %s\n", alunos[indiceMaiorMedia].nome);
+    printf("Notas: %.2f %.2f %.2f\n", alunos[indiceMaiorMedia].notas[0], alunos[indiceMaiorMedia].notas[1], alunos[indiceMaiorMedia].notas[2]);
+
+    system("pause");
+
+    return 0;
+}
