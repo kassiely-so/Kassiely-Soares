@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+enum semana {Domingo = 1, Segunda, Terca, Quarta, Quinta, Sexta, Sabado};
+
+int main() {
+    int dia;
+
+    printf("Digite um número de 1 a 7 para representar um dia da semana: ");
+    scanf("%d", &dia);
+
+    switch(dia) {
+        case Domingo:
+            printf("Domingo\n");
+            break;
+        case Segunda:
+            printf("Segunda-feira\n");
+            break;
+        case Terca:
+            printf("Terça-feira\n");
+            break;
+        case Quarta:
+            printf("Quarta-feira\n");
+            break;
+        case Quinta:
+            printf("Quinta-feira\n");
+            break;
+        case Sexta:
+            printf("Sexta-feira\n");
+            break;
+        case Sabado:
+            printf("Sábado\n");
+            break;
+        default:
+            printf("Valor inválido. Digite um número entre 1 e 7.\n");
+            break;
+    }
+
+    system("pause");
+
+    return 0;
+}
