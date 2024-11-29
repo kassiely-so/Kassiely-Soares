@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Pessoa {
+    char nome[100];
+    int idade;
+    char endereco[200];
+};
+
+int main() {
+    struct Pessoa pessoa;
+
+    printf("Digite o nome: ");
+    fgets(pessoa.nome, sizeof(pessoa.nome), stdin);
+    pessoa.nome[strcspn(pessoa.nome, "\n")] = '\0';  
+
+    printf("Digite a idade: ");
+    scanf("%d", &pessoa.idade);
+    getchar();  
+
+    printf("Digite o endereco: ");
+    fgets(pessoa.endereco, sizeof(pessoa.endereco), stdin);
+    pessoa.endereco[strcspn(pessoa.endereco, "\n")] = '\0'; 
+
+    printf("\nDados informados:\n");
+    printf("Nome: %s\n", pessoa.nome);
+    printf("Idade: %d\n", pessoa.idade);
+    printf("Endereço: %s\n", pessoa.endereco);
+
+    system("pause");
+
+    return 0;
+}
